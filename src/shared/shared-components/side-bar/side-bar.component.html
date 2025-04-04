@@ -1,0 +1,32 @@
+<div class="header-bar shadow-sm bg-white bg-opacity-10 rounded-xl p-2 flex flex-col md:flex-row md:justify-around md:w-[290px] md:mt-5 items-center">
+  <div class="profile bg-white p-2 flex justify-center items-center rounded-xl md:size-12" appTransformUp>
+    <img src="sidebar/circle-user-round-black.png" alt="profile">
+  </div>
+  <div class="content hidden md:block text-center md:text-left">
+    <h3 class="text-white font-medium font-mono">Robin Store</h3>
+    <span class="text-[18px] text-[#ffffff80]">Free Plan</span>
+  </div>
+  <div class="icons hidden md:block">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-up-down-icon">
+      <path d="m7 15 5 5 5-5"/>
+      <path d="m7 9 5-5 5 5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- <div class="search-bar hidden md:flex items-center w-fit md:w-[290px] bg-white bg-opacity-10 shadow-sm rounded-xl p-2 my-5">
+  <div class="search-div p-2 flex justify-center items-center rounded-xl">
+    <label for="search" class="cursor-pointer">
+      <img src="sidebar/search.png" alt="search">
+    </label>
+    <input type="text" id="search" placeholder="Search..." class="hidden md:inline bg-inherit text-white border-0" />
+  </div>
+</div> -->
+
+<div class="links w-fit md:w-full mt-5">
+  <ul class="text-white">
+   @for (link of linksData; track $index) {
+    <app-link [link]="link" [isActive]="activeLink === link" (click)="setActive(link)" />
+   }
+  </ul>
+</div>

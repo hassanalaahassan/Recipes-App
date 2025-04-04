@@ -1,0 +1,10 @@
+.profile img{
+  transition: all .4s;
+}
+.logout{
+  transform: translateX(0px);
+  transition: all .2s;
+}
+.footer-bar:hover .logout{
+  transform: translateX(3px);
+}

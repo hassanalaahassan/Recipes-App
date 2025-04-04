@@ -1,0 +1,6 @@
+<li [routerLink]="'/'+link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="flex items-center nav-link cursor-pointer p-4 gap-4 w-fit md:w-full">
+  <img [src]="link.icon" [alt]="link.title">
+  <p class="font-semibold font-mono text-xl uppercase hidden md:block ">
+    {{link.title}}
+  </p>
+</li>
