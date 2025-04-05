@@ -1,0 +1,53 @@
+<div>
+  <label [for]="label" class="block mb-2 text-sm font-medium text-[#121212]">{{label}}</label>
+  <input [type]="type" [name]="label" [id]="label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" [placeholder]="placeholder"
+  [ngClass]="{'border-red-500': (touched && required) || (touched && minLen) || (touched && email)}"
+  [formControl]="controlName">
+  <div
+   class="flex flex-col sm:flex-row sm:items-center mt-2 gap-3">
+    <div class="flex gap-1">
+      <img [src]=
+      "!touched && required ?
+      'Auth/black-check.png'
+      :
+      touched && required ?
+      'Auth/red-check.png':
+      'Auth/green-check.png'"
+       class="w-4">
+      <p [class]=
+      "!touched && required ?
+      'text-gray-500 text-xs'
+      :touched && required ?
+      'text-red-500 text-xs':
+      'text-green-500 text-xs'">
+      {{label}} Is Required</p>
+    </div>
+    <div class="flex gap-1" *ngIf="minLen !== undefined">
+      <img [src]=
+      "!touched && required?
+      'Auth/black-check.png':
+       required && touched ?
+      'Auth/red-check.png':
+      minLen ?
+      'Auth/red-check.png':
+      'Auth/green-check.png'"
+       class="w-4">
+      <p [class]="!touched && required?'text-gray-500 text-xs': required && touched ? 'text-red-500 text-xs' :
+      minLen ? 'text-red-500 text-xs':
+      'text-green-500 text-xs'">Min length is 6</p>
+    </div>
+    <div class="flex gap-1" *ngIf="email !== undefined">
+      <img [src]=
+      "!touched && required?
+      'Auth/black-check.png':
+       required && touched ?
+      'Auth/red-check.png':
+      email ?
+      'Auth/red-check.png':
+      'Auth/green-check.png'"
+       class="w-4">
+      <p [class]="!touched && required?'text-gray-500 text-xs': required && touched ? 'text-red-500 text-xs' :
+      email ? 'text-red-500 text-xs':
+      'text-green-500 text-xs'">Must Be In Email Formating</p>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, QueryList, ViewChildren, viewChildren } from '@angular/core';
 import { TransformUpDirective } from '../../dirctives/transform-up.directive';
 import { LinkComponent } from "./link/link.component";
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -29,8 +30,8 @@ export class SideBarComponent  {
       route:"/Fav-Recipe"
     },
     {
-      title:"Customers",
-      icon:"sidebar/Links-icons/Users_Group_Rounded.png"
+      title:"Log out",
+      icon:"sidebar/log-out.png",
     },
     {
       title:"Analytics",
@@ -51,9 +52,17 @@ export class SideBarComponent  {
   ]
   activeLink:{title:string,icon:string}  = this.linksData[0]
 
+  constructor(private auth:AuthService) {
+  }
   setActive(link:{title:string,icon:string}):void{
     this.activeLink = link
+    if (link.title === "Log out") {
+      this.signOut()
+    }
   }
 
+  signOut():void{
+    this.auth.logOut()
+  }
 
 }

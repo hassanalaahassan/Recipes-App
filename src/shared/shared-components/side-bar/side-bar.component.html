@@ -13,20 +13,10 @@
     </svg>
   </div>
 </div>
-
-<!-- <div class="search-bar hidden md:flex items-center w-fit md:w-[290px] bg-white bg-opacity-10 shadow-sm rounded-xl p-2 my-5">
-  <div class="search-div p-2 flex justify-center items-center rounded-xl">
-    <label for="search" class="cursor-pointer">
-      <img src="sidebar/search.png" alt="search">
-    </label>
-    <input type="text" id="search" placeholder="Search..." class="hidden md:inline bg-inherit text-white border-0" />
-  </div>
-</div> -->
-
 <div class="links w-fit md:w-full mt-5">
   <ul class="text-white">
    @for (link of linksData; track $index) {
-    <app-link [link]="link" [isActive]="activeLink === link" (click)="setActive(link)" />
+     <app-link [link]="link" [isActive]="activeLink === link" (click)="setActive(link)" />
    }
   </ul>
 </div>
