@@ -1,0 +1,41 @@
+aside{
+  transition: all .3s;
+}
+.profile img{
+  transition: all .4s;
+}
+.logout{
+  transform: translateX(0px);
+  transition: all .2s;
+}
+.footer-bar:hover .logout{
+  transform: translateX(3px);
+}
+.animate-show {
+  animation: fadeIn 0.4s ease-in forwards;
+}
+.animate-hide {
+  animation: fadeOut 0.4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 0;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,52 @@
+<section class="relative">
+  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-3xl font-mono text-center font-bold text-[#121212]">Add a new Recipe</h2>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+          <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div class="col-span-2">
+                  <label for="name" class="block mb-2 text-sm font-medium text-[#121212]">Recipe Name</label>
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Recipe name" formControlName="title">
+              </div>
+              <div class="w-full col-span-2 md:col-span-1">
+                  <label for="brand" class="block mb-2 text-sm font-medium text-[#121212]">Country</label>
+                  <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Recipe Country" formControlName="country">
+              </div>
+              <div class="w-full col-span-2 md:col-span-1">
+                <label class="block text-sm font-medium mb-2 text-gray-900" for="file_input">Upload Image</label>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" accept=".jpg,.jpeg,.png,.svg,GIF" (change)="onFileSelected($event)" #ImageInput/>
+                <p class="mt-2 text-sm text-gray-500" id="file_input_help">SVG , jpeg , PNG , JPG or GIF
+                  .</p>
+              </div>
+              <div class="flex justify-between items-center col-span-2 w-full">
+                  <h2 class="font-semibold text-md sm:text-lg text-[#121212] mt-4 mb-2">
+                      Add Ingredients
+                  </h2>
+                  <button type="button" (click)="addIngredient()" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-xs sm:text-sm font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-primary-200">
+                    Add Ingradient
+                  </button>
+              </div>
+
+              <div formArrayName="ingredients" class="col-span-2 grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6">
+                @for (ingradient of recipeForm.controls.ingredients.controls; track $index) {
+                  <div class="w-full col-span-2 md:col-span-1">
+                    <label [for]="'ingradient'+$index" class="block mb-2 text-sm font-medium text-[#121212]">Ingradient <span class="text-gray-600">
+                      {{$index + 1}}
+                    </span></label>
+                    <input type="text" [name]="'ingradient'+$index" [id]="'ingradient'+$index" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"             [placeholder]="'Recipe\'s Ingradient '+($index+1)" formControlName="{{$index}}"/>
+                  </div>
+                }
+              </div>
+              <div class="col-span-2">
+                  <label for="description" class="block mb-2 text-sm font-medium text-[#121212]">Description</label>
+                  <textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Your description here" formControlName="description"></textarea>
+              </div>
+          </div>
+          <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-primary-200">
+              Add Recipe
+          </button>
+      </form>
+  </div>
+  <div class="fixed top-2 right-4 z-50" [ngClass]="showToast ? '' : 'hidden'">
+    <app-toast [type]="'succeess'"/>
+  </div>
+</section>

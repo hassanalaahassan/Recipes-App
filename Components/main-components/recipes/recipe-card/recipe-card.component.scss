@@ -1,0 +1,11 @@
+.card {
+  opacity: 0;
+  transform: translate(80px , 80px);
+
+  transition: all 0.6s ease ;
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translate(0,0);
+}

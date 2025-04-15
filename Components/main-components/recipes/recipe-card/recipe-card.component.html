@@ -1,0 +1,24 @@
+<a
+  appScrollAnimation
+
+class="card flex h-full flex-col relative bg-white border border-gray-200 rounded-lg shadow-sm p-1.5 md:p-3 md:max-w-xl">
+  @if (user.role =="user") {
+    @if (!recipeIsFavorite) {
+      <img src="Fav/heart.png" (click)="addRecipeToFavorites(recipe.id)" alt="favorite" class="absolute bottom-2 right-4 w-6 h-6 cursor-pointer z-50">
+    }
+    @else {
+      <img src="Fav/full-heart.gif" (click)="removeRecipeFromFavorites(recipe.id)" alt="favorite" class="absolute bottom-2 right-4 w-6 h-6 cursor-pointer z-50">
+    }
+  }
+  <img (click)="sendRecipe()" class="object-cover w-full cursor-pointer rounded-lg size-36 transition-transform hover:scale-105 " [src]="recipe.image" [alt]="recipe.title">
+  <div class="flex flex-col justify-between p-2 leading-normal">
+      <div class="flex items-center justify-between">
+        <h5 class="mb-2 text-md lg:text-2xl font-bold tracking-tight text-gray-900 ">
+          {{recipe.title.split(" ").slice(0,2).join(" ")}}
+        </h5>
+        <span class=" text-sm font-medium me-2 px-2.5 py-0.5 rounded-md" [ngClass]="recipe.id % 2 === 0 ?'bg-gray-600 text-gray-100' : 'bg-purple-100 text-purple-800'">{{recipe.country}}</span>
+      </div>
+      <p class="mb-3 font-normal text-gray-700 w-full">{{recipe.description.split(" ").slice(0,4).join(" ")| titlecase}} ...</p>
+  </div>
+</a>
+

@@ -1,0 +1,38 @@
+.nav-link{
+  color: #ffffff9e;
+  transition: .2s all;
+}
+
+.active{
+  background: #ffffff1b;
+  border-radius: 14px;
+  color: #fff;
+}
+.animate-show {
+  animation: fadeIn 0.4s ease-in forwards;
+}
+.animate-hide {
+  animation: fadeOut 0.4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 0;
+    visibility: visible;
+  }
+}

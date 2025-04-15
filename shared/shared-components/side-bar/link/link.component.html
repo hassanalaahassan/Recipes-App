@@ -1,0 +1,19 @@
+@if(link.route){
+  <li [routerLink]="'/'+link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="flex items-center gap-4 nav-link cursor-pointer p-4 w-fit "
+    [ngClass]="isShowed?'md:w-full':''"
+  >
+    <img [src]="link.icon" [alt]="link.title">
+    <p class="font-semibold font-mono text-xl uppercase hidden md:block" [ngClass]="toggleClass?'animate-show':'animate-hide'" *ngIf="isShowed">
+      {{link.title}}
+    </p>
+  </li>
+}@else{
+  <li  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="flex items-center gap-4 nav-link cursor-pointer p-4 w-fit "
+    [ngClass]="isShowed?'md:w-full':''"
+  >
+    <img [src]="link.icon" [alt]="link.title">
+    <p class="font-semibold font-mono text-xl uppercase hidden md:block" [ngClass]="toggleClass?'animate-show':'animate-hide'" *ngIf="isShowed">
+      {{link.title}}
+    </p>
+  </li>
+}

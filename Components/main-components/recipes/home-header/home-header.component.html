@@ -1,0 +1,15 @@
+<h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl">Get All Recipes with <span class="text-gray-700">the world's #1</span> Akalny</h1>
+  <div class="flex">
+      <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-700 sr-only ">Your Email</label>
+      <div class="relative w-full">
+          <input type="search" id="search-dropdown" #searchInput class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-0 outline-0 border-gray-300 placeholder-gray-400" placeholder="Search For Recipes" required (keyup)="sendSearchTerm()" />
+          
+          <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full transition-all hover:bg-[#121212]  text-white rounded-e-lg bg-slate-800 focus:ring-4 focus:outline-none">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+              <span class="sr-only">Search</span>
+          </button>
+      </div>
+  </div>
+

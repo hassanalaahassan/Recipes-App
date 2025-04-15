@@ -1,0 +1,42 @@
+<aside
+  #sidebar
+  class="w-fit bg-[#121212] p-4 md:p-7 overflow-y-scroll overflow-x-hidden min-h-full"
+  [ngClass]="isSideBarShowed ? 'md:w-[350px]':' max-w-fit'"
+  >
+<div
+    (click)="toggleSideBar()"
+    class="flex max-w-fit cursor-pointer shadow-sm bg-white items-center justify-center bg-opacity-10 rounded-xl p-2">
+        <div class="bg-white p-2 rounded-xl">
+          <img src="sidebar/menu-black.png" alt="menu">
+        </div>
+    </div>
+<div class="header-bar shadow-sm bg-white bg-opacity-10 rounded-xl p-2 flex flex-col md:flex-row md:justify-around mt-5 items-center"
+    [ngClass]="isSideBarShowed ? 'md:w-[290px]' :'w-fit'"
+>
+  <div class="profile bg-white p-2 flex justify-center items-center rounded-xl md:size-12" appTransformUp>
+    <img src="sidebar/circle-user-round-black.png" alt="profile">
+  </div>
+  <div class="content hidden md:block text-center md:text-left" [ngClass]="flagClass? 'animate-show' : 'animate-hide'" *ngIf="isSideBarShowed">
+    <h3 class="text-white font-medium font-mono capitalize">{{user.userName}}</h3>
+    <span class="text-[18px] text-[#ffffff80]">Free Plan</span>
+  </div>
+  <div class="icons hidden md:block" [ngClass]="flagClass? 'animate-show' : 'animate-hide'" *ngIf="isSideBarShowed">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-up-down-icon">
+      <path d="m7 15 5 5 5-5"/>
+      <path d="m7 9 5-5 5 5"/>
+    </svg>
+  </div>
+</div>
+<div class="links w-fit md:w-full mt-5">
+  <ul class="text-white">
+   @for (link of linksData; track $index) {
+    @if (user.role == link.linkFor) {
+     <app-link [link]="link" [isActive]="activeLink === link" (click)="setActive(link)" [isShowed]="isSideBarShowed" [toggleClass]="flagClass" />
+    }
+    @else if (link.linkFor == "all") {
+      <app-link [link]="link" [isActive]="activeLink === link" (click)="setActive(link)" [isShowed]="isSideBarShowed" [toggleClass]="flagClass"/>
+    }
+   }
+  </ul>
+</div>
+</aside>

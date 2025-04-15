@@ -1,0 +1,151 @@
+<section class="relative">
+  <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-3xl font-mono text-center font-bold text-[#121212]">Create New Account At <span class="text-gray-500">Akalny</span></h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+            <div class="col-span-2 w-full">
+              <app-form-field
+              [controlName]="userForm.get('userName')!"
+              [label]="'User Name'"
+              [type]="'text'"
+              [placeholder]="'User Name'"
+              [touched]="userForm.get('userName')?.touched"
+              [required]="userForm.get('userName')?.hasError('required')"
+              />
+            </div>
+            <div class="col-span-2 w-full">
+            <app-form-field
+            [controlName]="userForm.get('email')"
+            [label]="'User Email'"
+            [type]="'email'"
+            [placeholder]="'User Email'"
+            [touched]="userForm.get('email')?.touched"
+            [required]="userForm.get('email')?.hasError('required')"
+            [email]="userForm.get('email')?.hasError('email')"
+            />
+            </div>
+            <div class="col-span-2 w-full">
+            <app-form-field
+            [controlName]="userForm.get('password')!"
+            [label]="'User Password'"
+            [type]="'password'"
+            [placeholder]="'User Password'"
+            [touched]="userForm.get('password')?.touched"
+            [minLen]="userForm.get('password')?.hasError('minlength')"
+            [required]="userForm.get('password')?.hasError('required')"
+            />
+            </div>
+
+          </div>
+          <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-primary-200">
+              Create Account
+          </button>
+      </form>
+  </div>
+  <div class="fixed top-2 right-4 z-50" [ngClass]="showToast ? '' : 'hidden'">
+    <app-toast [type]="'succeess'"/>
+  </div>
+</section>
+     <!-- <div class="col-span-2">
+                  <label for="name" class="block mb-2 text-sm font-medium text-[#121212]">User Name</label>
+                  <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="User Name"
+                  [ngClass]="{'border-red-500': userForm.get('userName')?.invalid && (userForm.get('userName')?.touched || userForm.get('userName')?.dirty)}"
+                  formControlName="userName">
+                  @if (userForm.get('userName')?.invalid && userForm.get('userName')?.touched) {
+                      <div class="flex items-center mt-2 gap-1">
+                        <img src="Auth/red-check.png" width="16" alt="">
+                        <p class="text-red-500 text-xs">User Name Is Required</p>
+                      </div>
+                  }
+                  @else if(!userForm.get('userName')?.invalid && userForm.get('userName')?.touched){
+                    <div class="flex items-center mt-2 gap-1">
+                      <img src="Auth/green-check.png" width="16" alt="">
+                      <p class="text-green-500 text-xs">User Name Is Required</p>
+                    </div>
+                  }
+                  @else{
+                    <div class="flex items-center mt-2 gap-1">
+                      <img src="Auth/black-check.png" width="16" alt="">
+                      <p class="text-gray-500 text-xs">User Name Is Required</p>
+                    </div>
+                  }
+              </div>
+              <div class="col-span-2">
+                  <label for="email" class="block mb-2 text-sm font-medium text-[#121212]">User Email</label>
+                  <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="User Email"
+                  [ngClass]="{'border-red-500': userForm.get('email')?.invalid && (userForm.get('email')?.touched || userForm.get('email')?.dirty)}"
+                  formControlName="email">
+                  @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+                    <div class="flex items-center mt-2 gap-1">
+                      <img src="Auth/red-check.png" width="16" alt="">
+                      <p class="text-red-500 text-xs">User Email Is Required</p>
+                    </div>
+                }
+                @else if(!userForm.get('email')?.invalid && userForm.get('email')?.touched){
+                  <div class="flex items-center mt-2 gap-1">
+                    <img src="Auth/green-check.png" width="16" alt="">
+                    <p class="text-green-500 text-xs">User Email Is Required</p>
+                  </div>
+                }
+                @else{
+                  <div class="flex items-center mt-2 gap-1">
+                    <img src="Auth/black-check.png" width="16" alt="">
+                    <p class="text-gray-500 text-xs">User Email Is Required</p>
+                  </div>
+                }
+              </div>
+              <div class="w-full col-span-2">
+                  <label for="password" class="block mb-2 text-sm font-medium text-[#121212]">Password</label>
+                  <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="User Password"
+                  [ngClass]="{'border-red-500': userForm.get('password')?.invalid && (userForm.get('password')?.touched || userForm.get('password')?.dirty)}"
+                  formControlName="password">
+                  @if (userForm.get('password')?.touched && userForm.get('password')?.hasError('required')) {
+                    <div class="flex items-center mt-2 gap-3">
+                      <div class="flex gap-1">
+                        <img src="Auth/red-check.png" width="16">
+                        <p class="text-red-500 text-xs">Password Is Required</p>
+                      </div>
+                      <div class="flex gap-1">
+                        <img src="Auth/red-check.png" width="16">
+                        <p class="text-red-500 text-xs">Min length is 6</p>
+                      </div>
+                    </div>
+                }
+                  @else if (userForm.get('password')?.touched && userForm.get('password')?.hasError('minlength')) {
+                    <div class="flex items-center mt-2 gap-3">
+                      <div class="flex items-center gap-1">
+                        <img src="Auth/green-check.png" width="16" alt="">
+                        <p class="text-green-500 text-xs">Password Is Required</p>
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <img src="Auth/red-check.png" width="16">
+                        <p class="text-red-500 text-xs">Min length is 6</p>
+                      </div>
+                    </div>
+                }
+                @else if(!userForm.get('password')?.invalid ){
+                  <div class="flex items-center mt-2 gap-3">
+                    <div class="flex items-center gap-1">
+                      <img src="Auth/green-check.png" width="16" alt="">
+                      <p class="text-green-500 text-xs">Password Is Required</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <img src="Auth/green-check.png" width="16">
+                      <p class="text-green-500 text-xs">Min length is 6</p>
+                    </div>
+                  </div>
+                }
+                @else{
+                  <div class="flex items-center mt-2 gap-3">
+                    <div class="flex items-center gap-1">
+                      <img src="Auth/black-check.png" width="16" alt="">
+                      <p class="text-gray-500 text-xs">Password Is Required</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <img src="Auth/black-check.png" width="16">
+                      <p class="text-gray-500 text-xs">Min length is 6</p>
+                    </div>
+                  </div>
+                }
+              </div>
+          </div> -->
